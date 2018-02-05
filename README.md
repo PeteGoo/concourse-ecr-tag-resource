@@ -63,8 +63,8 @@ jobs:
   - get: my-image
   - put: ecr-tag
     params:
-      existing_digest: ecr-tag-resource-image/digest
-      new_tag: mgmt
+      existing_digest: my-image/digest
+      new_tag: test
 
 resources:
 - name: ecr-tag
