@@ -1,0 +1,29 @@
+jobs:
+
+- name: tag-with-test
+  plan:
+  - get: my-image
+  - put: ecr-tag
+    params:
+      existing_digest: ecr-tag-resource-image/digest
+      new_tag: mgmt
+
+resources:
+- name: ecr-tag
+  type: ecr-tag-resource
+  source:
+    repository: 12345678.dkr.ecr.us-west-2.amazonaws.com/my-image
+
+- name: my-image
+  type: docker-image
+  source:
+    repository: 12345678.dkr.ecr.us-west-2.amazonaws.com/my-image
+
+resource_types:
+
+- name: ecr-tag-resource
+  type: docker-image
+  source:
+    repository: petegoo/concourse-ecr-tag-resource
+    tag: latest
+
