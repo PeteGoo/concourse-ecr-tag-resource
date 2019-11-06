@@ -69,7 +69,7 @@ def out_(source_dir, stdin):
     new_tag = get_contents_or_value(source_dir, new_tag)
     repository = get_contents_or_value(source_dir, repository)
 
-    repository_name = repository.split('/')[-1]
+    repository_name = repository.split('/',1)[-1]
     account_id = repository.split('.')[0]
 
     ecr = boto3.client('ecr', get_region())
